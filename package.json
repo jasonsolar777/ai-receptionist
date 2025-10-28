@@ -1,7 +1,8 @@
 {
-{
   "name": "ai-receptionist",
   "version": "1.0.0",
+  "private": true,
+  "type": "commonjs",
   "main": "src/index.js",
   "engines": { "node": ">=18" },
   "scripts": {
@@ -11,8 +12,5 @@
     "express": "^4.19.2",
     "body-parser": "^1.20.3",
     "twilio": "^4.21.0"
-  }
-}
-
   }
 }
