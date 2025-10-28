@@ -97,6 +97,12 @@ app.post("/goodbye", (_req, res) => {
   vr.hangup();
   res.type("text/xml").send(vr.toString());
 });
-
 const PORT = process.env.PORT || 3000;
-app.listen(PORT, () => console.log("AI Receptionist listening on", PORT));
+
+// quick health check so we can see it's up
+app.get('/', (req, res) => res.send('ok'));
+
+// IMPORTANT: bind to 0.0.0.0 on Render
+app.listen(PORT, '0.0.0.0', () => {
+  console.log('AI Receptionist listening on', PORT);
+});
