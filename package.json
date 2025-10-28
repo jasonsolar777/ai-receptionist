@@ -1,0 +1,17 @@
+{
+  "name": "ai-receptionist",
+  "version": "1.0.0",
+  "description": "Simple Twilio + GPT voice receptionist",
+  "main": "server.js",
+  "type": "commonjs",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "body-parser": "^1.20.2",
+    "dotenv": "^16.4.5",
+    "express": "^4.19.2",
+    "openai": "^4.55.4",
+    "twilio": "^4.23.0"
+  }
+}
