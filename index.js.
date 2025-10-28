@@ -1,0 +1,19 @@
+const express = require('express');
+const bodyParser = require('body-parser');
+const { twiml: { VoiceResponse } } = require('twilio');
+
+const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+
+// health check
+app.get('/', (req, res) => res.send('ok'));
+
+// simple voice webhook
+app.post('/voice', (req, res) => {
+  const vr = new VoiceResponse();
+  vr.say({ voice: 'alice' }, 'Hi. Your A I receptionist is online.');
+  res.type('text/xml').send(vr.toString());
+});
+
+const PORT = process.env.PORT || 3000;
+app.listen(PORT, '0.0.0.0', () => console.log('listening on', PORT));
