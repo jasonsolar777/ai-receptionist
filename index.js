@@ -1,10 +1,18 @@
-const http = require('http');
+const express = require("express");
+const bodyParser = require("body-parser");
 
-const server = http.createServer((req, res) => {
-  if (req.url === '/') return res.end('ok');
-  res.statusCode = 404;
-  res.end('not found');
+const app = express();
+app.use(bodyParser.urlencoded({ extended: false }));
+
+app.get("/", (req, res) => res.send("AI Receptionist Live ✅"));
+
+app.post("/voice", (req, res) => {
+  const { VoiceResponse } = require("twilio").twiml;
+  const twiml = new VoiceResponse();
+  twiml.say("Hello! Thanks for calling. This is your AI receptionist.");
+  res.type("text/xml");
+  res.send(twiml.toString());
 });
 
 const PORT = process.env.PORT || 3000;
-server.listen(PORT, () => console.log("Listening on", PORT));
+app.listen(PORT, () => console.log("AI Receptionist listening on", PORT));
